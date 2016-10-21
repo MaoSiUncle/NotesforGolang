@@ -1,0 +1,23 @@
+//写这个的目的是因为 在搞golang的过程 官网的题那个翻译 实在很考验理解力。。所以才有了下面的。
+1.不用math.Sqrt 自己写一个 Sqrt的函数
+  官网给了公式：被开方数 x
+  z=z-(z*z-x)/(2*z)
+  
+  这个叫牛顿开方法。。。。另外 该公式只需要 最多执行10次就可以逼近 最多执行10次后 (z的值就不变了)
+  所以 意思是 你可以先用for循环 终止条件为10次 然后观察 z的规律 发现z几次后相等就可以不用go on了。
+  //代码
+  。。。。。。
+  func Sqrt(x float64) float64 {
+	  seed := float64(1)
+	  for i := 0; i < 10; i++ {
+		  tmp := seed - (seed*seed-x)/(2*seed)
+		  if tmp == seed {
+			  break
+		  }
+		  fmt.Println(seed)
+		  seed = tmp
+	  }
+	  return seed
+  }
+  。。。。。。
+  
